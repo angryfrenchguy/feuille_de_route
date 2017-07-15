@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html locale="fr-CA">
-    
+
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
 <title>Feuille de Route</title>
-    
+
 <!--    CSS général-->
     <link rel="stylesheet" href="css/style.css">
 <!--    CSS pour jqueryUI-->
@@ -22,20 +22,20 @@
 <!--    Mon code-->
     <script src="code/code.js"></script>
 </head>
-    
+
 <body>
-    
+
     <div>
         <img class="logo" src="css/images/excellence.png" alt="logo">
         <h1>FEUILLE DE ROUTE</h1>
-        
+
         <div class="entete">
             <p>Semaine du : <span id="semaineDU"></span> au <span id="semaineAU"></span></p>
         <p>Chauffeur : Georges Boulanger</p>
         </div>
-        
+
     </div>
-    
+
     <table id="tableID">
         <thead>
             <tr>
@@ -277,18 +277,18 @@
                 <td class="edit"></td>
             </tr>
         </tbody>
-    
+
     </table>
     <br>
     <div id="boitedenotes">
         <table style="width:100%">
-            
+
 <!--            Utiliser jeditabel type:textarea rows 3?-->
             <tr>
                 <td contenteditable="false" onkeypress="return (this.innerText.length <= 200)" style="border: none; border-bottom: 1px solid black"><span contenteditable="false"    >Notes:  </span></td>
             </tr>
             <tr>
-               <td contenteditable="false" onkeypress="return (this.innerText.length <= 200)" style="border: none; border-bottom: 1px solid black"></td> 
+               <td contenteditable="false" onkeypress="return (this.innerText.length <= 200)" style="border: none; border-bottom: 1px solid black"></td>
             </tr>
             <tr>
                 <td contenteditable="false" onkeypress="return (this.innerText.length <= 200)" style="border: none; border-bottom: 1px solid black"></td>
@@ -296,7 +296,7 @@
         </table>
     </div>
     <br>
-    
+
     <table id="tableconteneurfuel">
         <tr>
             <td>
@@ -312,39 +312,39 @@
         </thead>
         <tbody>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
             </tr>
         </tbody>
     </table>
@@ -401,7 +401,7 @@
             </td>
         </tr>
     </table>
-    
+
     <script>
         $(document).ready(function() {
             moment.locale('fr-CA');
@@ -411,7 +411,7 @@
         });
     </script>
 
-    
+
 </body>
 
 </html>

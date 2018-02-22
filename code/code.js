@@ -49,7 +49,7 @@ function editDeux() {
             var bus = colonneBus.getElementsByTagName('input')[0] ? colonneBus.getElementsByTagName('input')[0].value : ligne.cells[3].innerHTML;
             var odoIN = colonneOdoIN.getElementsByTagName('input')[0] ? colonneOdoIN.getElementsByTagName('input')[0].value : ligne.cells[4].innerHTML;
             var odoOUT = colonneOdoOUT.getElementsByTagName('input')[0] ? colonneOdoOUT.getElementsByTagName('input')[0].value : ligne.cells[5].innerHTML;
-            var odoTOTAL = colonneOdoTOTAL.getElementsByTagName('input')[0] ? colonneOdoTOTAL.getElementsByTagName('input')[0].value : ligne.cells[6].innerHTML;
+            var kmTOTAL = colonneOdoTOTAL.getElementsByTagName('input')[0] ? colonneOdoTOTAL.getElementsByTagName('input')[0].value : ligne.cells[6].innerHTML;
             var tempsIN = colonneTempsIN.getElementsByTagName('input')[0] ? colonneTempsIN.getElementsByTagName('input')[0].value : ligne.cells[7].innerHTML;
             var tempsOUT = colonneTempsOUT.getElementsByTagName('input')[0] ? colonneTempsOUT.getElementsByTagName('input')[0].value : ligne.cells[8].innerHTML;
             var tempsTOTAL = colonneTempsTOTAL.getElementsByTagName('input')[0] ? colonneTempsTOTAL.getElementsByTagName('input')[0].value : ligne.cells[9].innerHTML;
@@ -76,7 +76,7 @@ function editDeux() {
                 bus: bus,
                 odoIN: odoIN,
                 odoOUT: odoOUT,
-                odoTOTAL: odoTOTAL,
+                kmTOTAL: kmTOTAL,
                 tempsIN: tempsIN,
                 tempsOUT: tempsOUT,
                 tempsTOTAL: tempsTOTAL,
@@ -103,7 +103,7 @@ function editDeux() {
                     moment(data[i].date, 'L').isValid() ? document.getElementById('tbodyID').rows[i].cells[0].innerHTML = moment(data[i].date, 'L').format('ll') : document.getElementById('tbodyID').rows[i].cells[0].innerHTML = "";
                 };
                 console.log(data);
-                calculateurDeKm();
+                // calculateurDeKm();
                 lesHeures();
             },
             error: function(data, textStatus, errorThrown) {
@@ -208,7 +208,7 @@ function chargerData(datesemaine) {
                     var bus = data[i].bus;
                     var odoIN = data[i].odoIN;
                     var odoOUT = data[i].odoOUT;
-                    var odoTOTAL = data[i].odoTOTAL;
+                    var kmTOTAL = data[i].kmTOTAL;
                     var tempsIN = data[i].tempsIN;
                     var tempsOUT = data[i].tempsOUT;
                     var tempsTOTAL = data[i].tempsTOTAL;
@@ -220,7 +220,7 @@ function chargerData(datesemaine) {
                     bus === '0' ? $(ligne.cells[1]).html("") : $(ligne.cells[3]).html(bus);
                     odoIN === '0' ? $(ligne.cells[1]).html("") : $(ligne.cells[4]).html(odoIN);
                     odoOUT === '0' ? $(ligne.cells[1]).html("") : $(ligne.cells[5]).html(odoOUT);
-                    odoTOTAL === '0' ? $(ligne.cells[1]).html("") : $(ligne.cells[6]).html(odoTOTAL);
+                    kmTOTAL === '0' ? $(ligne.cells[1]).html("") : $(ligne.cells[6]).html(kmTOTAL);
                     $(ligne.cells[7]).html(tempsIN);
                     $(ligne.cells[8]).html(tempsOUT);
                     $(ligne.cells[9]).html(tempsTOTAL);

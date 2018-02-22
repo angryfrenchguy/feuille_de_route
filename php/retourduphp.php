@@ -12,7 +12,8 @@ if ($conn->connect_error) {
 }
 
 //$sth = mysqli_query($conn,"SELECT * FROM feuille_de_temps WHERE idUnique LIKE '200001%%'");
-$sth = mysqli_query($conn,"SELECT * FROM feuille_de_temps WHERE idUnique LIKE '" . $_POST['data'] . "%%'");
+// $sth = mysqli_query($conn,"SELECT * FROM feuille_de_temps WHERE idUnique LIKE '" . $_POST['data'] . "%%'");
+$sth = mysqli_query($conn,"SELECT *,odoOUT-odoIN AS kmTOTAL FROM feuille_de_temps WHERE idUnique LIKE '" . $_POST['data'] . "%%'");
 //$sth = mysqli_query($conn,"SELECT * FROM feuille_de_temps");
 $rows = array();
 while ($r = mysqli_fetch_assoc($sth)) {
@@ -21,7 +22,7 @@ while ($r = mysqli_fetch_assoc($sth)) {
 
 $jsondata = json_encode($rows, JSON_PRETTY_PRINT);
 
-$chose = json_encode[$sth]; 
+$chose = json_encode[$sth];
 
 echo $jsondata;
 

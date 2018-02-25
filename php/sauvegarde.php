@@ -21,11 +21,11 @@ foreach($data[data] as $value) {
 
 foreach($lignes as $key => $ligne) {
 
-    if($ligne[date] == "Invalid date" AND $ligne[contrat] == "" AND $ligne[client] == "" AND $ligne[bus] == "" AND $ligne[odoIN] == "" AND $ligne[odoOUT] == "" AND $ligne[kmTOTAL] == "" AND $ligne[tempsIN] == "" AND $ligne[tempsOUT] == "" AND $ligne[tempsTOTAL] == "" AND $ligne[etat] == "") {
+    if($ligne[date] == "Invalid date" AND $ligne[contrat] == "" AND $ligne[client] == "" AND $ligne[bus] == "" AND $ligne[odoIN] == "" AND $ligne[odoOUT] == "" AND $ligne[tempsIN] == "" AND $ligne[tempsOUT] == "" AND $ligne[tempsTOTAL] == "" AND $ligne[etat] == "") {
         mysqli_query($conx, "DELETE FROM feuille_de_temps WHERE idUnique='" . $ligne[idUnique] . "'");
     } else {
         mysqli_query($conx,
-                    "INSERT INTO feuille_de_temps (idUnique, date, contrat, client, bus, odoIN, odoOUT, odoTOTAL, tempsIN, tempsOUT, tempsTOTAL, etat) VALUES ('"
+                    "INSERT INTO feuille_de_temps (idUnique, date, contrat, client, bus, odoIN, odoOUT, tempsIN, tempsOUT, tempsTOTAL, etat) VALUES ('"
                     . $ligne[idUnique] .
                     "','" . $ligne[date] .
                     "','" . $ligne[contrat] .
@@ -33,7 +33,7 @@ foreach($lignes as $key => $ligne) {
                     "','" . $ligne[bus] .
                     "','" . $ligne[odoIN] .
                     "','" . $ligne[odoOUT] .
-                    "','" . "odoOUT-odoIN" .
+                    // "','" . "odoOUT-odoIN" .
                     "','" . $ligne[tempsIN] .
                     "','" . $ligne[tempsOUT] .
                     "','" . $ligne[tempsTOTAL] .
@@ -46,7 +46,7 @@ foreach($lignes as $key => $ligne) {
                     "', bus ='" . $ligne[bus] .
                     "', odoIN ='" . $ligne[odoIN] .
                     "', odoOUT ='" . $ligne[odoOUT] .
-                    "', odoTOTAL ='" . $ligne[kmTOTAL] .
+                    // "', odoTOTAL ='" . "0" .
                     "', tempsIN ='" . $ligne[tempsIN] .
                     "', tempsOUT ='" . $ligne[tempsOUT] .
                     "', tempsTOTAL ='" . $ligne[tempsTOTAL] .

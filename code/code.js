@@ -6,9 +6,9 @@ function editUn() {
       onblur: 'submit',
       placeholder: ''
     };
-    if (classedate == 'edit editdate') {
+    if (classedate === 'edit editdate') {
       messettings.type = 'date';
-    } else if (classedate == 'edit editheure') {
+    } else if (classedate === 'edit editheure') {
       messettings.type = 'time';
     };
 
@@ -24,10 +24,8 @@ function editDeux() {
   var lignes = table.rows.length;
   var miarrey = [];
 
-  for (i = 0; i <  lignes; i++) {
-
+  for (i = 0; i < lignes; i++) {
     var ligne = table.rows[i];
-
     var colonneDate = ligne.cells[0];
     var colonneContrat = ligne.cells[1];
     var colonneClient = ligne.cells[2];
@@ -89,7 +87,6 @@ function editDeux() {
 
     miarrey.push(ligneObjet);
     console.log(miarrey);
-
   };
   $.ajax({
     url: 'php/sauvegarde.php',
@@ -99,17 +96,17 @@ function editDeux() {
     },
     success: function(data) {
       data = JSON.parse(data);
-      for (i = 0; i <  data.length; i++) {
+      for (i = 0; i < data.length; i++) {
         console.log(data[i].date);
-        moment(data[i].date, 'L').isValid() ? document.getElementById('tbodyID').rows[i].cells[0].innerHTML = moment(data[i].date, 'L').format('ll') : document.getElementById('tbodyID').rows[i].cells[0].innerHTML = "";
+        moment(data[i].date, 'L').isValid() ? document.getElementById('tbodyID').rows[i].cells[0].innerHTML = moment(data[i].date, 'L').format('ll') : document.getElementById('tbodyID').rows[i].cells[0].innerHTML = '';
       };
       console.log(data);
       calculateurDeKm();
       lesHeures();
     },
     error: function(data, textStatus, errorThrown) {
-      console.log("Statut: " + textStatus);
-      console.log("Erreur: " + errorThrown);
+      console.log('Statut: ' + textStatus);
+      console.log('Erreur: ' + errorThrown);
     }
   })
 }
@@ -124,15 +121,12 @@ function faireUnID(date, rang) {
 }
 
 function semaine() {
-
   $('#semaineDU').on('touchstart dblclick', function() {
-
     var def = $('#semaineDU').html();
 
-    $('#semaineDU').html("");
+    $('#semaineDU').html('');
 
     if (document.getElementById('semaineDU').hasChildNodes() !== true) {
-
       var element = document.createElement('input');
       element.type = "date";
       element.value = moment(def, 'll').isValid() ? moment(def, 'll').format('L') : moment().format('L');
@@ -141,7 +135,6 @@ function semaine() {
       var semaineDU = document.getElementById('semaineDU');
       semaineDU.appendChild(element);
     }
-
   })
 
   $('#semaineDU').focusout(function() {
@@ -154,12 +147,11 @@ function semaine() {
 
     var datesemaine = moment(debutdesemaine, 'll').format('YYYYww');
     chargerData(datesemaine);
-
   });
 }
 
 function sortable() {
-  $("#tbodyID").sortable({
+  $('#tbodyID').sortable({
     stop: function(event, ui) {
       editDeux();
     },
@@ -168,34 +160,32 @@ function sortable() {
 }
 
 function chargerData(datesemaine) {
-
   var table = document.getElementById('tbodyID');
 
   $.ajax({
-    dataType: "json",
-    type: "POST",
-    url: "php/retourduphp.php",
+    dataType: 'json',
+    type: 'POST',
+    url: 'php/retourduphp.php',
     data: {
       data: datesemaine
     }
   }).done(
     function(data) {
-
       if (data.length === 0) {
         for (i = 0; i < table.rows.length; i++) {
           var ligne = table.rows[i];
 
-          $(ligne.cells[0]).html("");
-          $(ligne.cells[1]).html("");
-          $(ligne.cells[2]).html("");
-          $(ligne.cells[3]).html("");
-          $(ligne.cells[4]).html("");
-          $(ligne.cells[5]).html("");
-          $(ligne.cells[6]).html("");
-          $(ligne.cells[7]).html("");
-          $(ligne.cells[8]).html("");
-          $(ligne.cells[9]).html("");
-          $(ligne.cells[10]).html("");
+          $(ligne.cells[0]).html('');
+          $(ligne.cells[1]).html('');
+          $(ligne.cells[2]).html('');
+          $(ligne.cells[3]).html('');
+          $(ligne.cells[4]).html('');
+          $(ligne.cells[5]).html('');
+          $(ligne.cells[6]).html('');
+          $(ligne.cells[7]).html('');
+          $(ligne.cells[8]).html('');
+          $(ligne.cells[9]).html('');
+          $(ligne.cells[10]).html('');
         }
       } else {
         for (i = 0; i < table.rows.length; i++) {
@@ -217,28 +207,26 @@ function chargerData(datesemaine) {
           var etat = data[i].etat;
 
           $(ligne.cells[0]).html(date);
-          contrat === '0' ? $(ligne.cells[1]).html("") : $(ligne.cells[1]).html(contrat);
+          contrat === '0' ? $(ligne.cells[1]).html('') : $(ligne.cells[1]).html(contrat);
           $(ligne.cells[2]).html(client);
-          bus === '0' ? $(ligne.cells[1]).html("") : $(ligne.cells[3]).html(bus);
-          odoIN === '0' ? $(ligne.cells[1]).html("") : $(ligne.cells[4]).html(odoIN);
-          odoOUT === '0' ? $(ligne.cells[1]).html("") : $(ligne.cells[5]).html(odoOUT);
-          kmTOTAL === '0' ? $(ligne.cells[1]).html("") : $(ligne.cells[6]).html(kmTOTAL);
+          bus === '0' ? $(ligne.cells[1]).html('') : $(ligne.cells[3]).html(bus);
+          odoIN === '0' ? $(ligne.cells[1]).html('') : $(ligne.cells[4]).html(odoIN);
+          odoOUT === '0' ? $(ligne.cells[1]).html('') : $(ligne.cells[5]).html(odoOUT);
+          kmTOTAL === '0' ? $(ligne.cells[1]).html('') : $(ligne.cells[6]).html(kmTOTAL);
           $(ligne.cells[7]).html(tempsIN);
           $(ligne.cells[8]).html(tempsOUT);
           $(ligne.cells[9]).html(tempsTOTAL);
           $(ligne.cells[10]).html(etat);
-
         }
       }
     });
 }
 
 function calculateurDeKm() {
-
   var table = document.getElementById('tbodyID');
   var lignes = table.rows.length;
 
-  for (i = 0; i <  lignes; i++) {
+  for (i = 0; i < lignes; i++) {
     var somme;
     var ligne = table.rows[i];
     var cellulecinq = Number(ligne.cells[5].innerHTML);
@@ -252,7 +240,6 @@ function calculateurDeKm() {
       ligne.cells[6].innerHTML = somme;
     }
   }
-
 }
 
 function lesHeures() {
@@ -260,17 +247,12 @@ function lesHeures() {
   var lignes = table.rows.length;
 
   for (i = 0; i < lignes; i++) {
-
     var row = table.rows[i];
-
     //        console.log(row.cells[7].innerHTML)
-
     var heureINpasFormatee = row.cells[7].innerHTML;
     var heureOUTpasFormatee = row.cells[8].innerHTML;
-
     var heureINformatee = moment(heureINpasFormatee, 'hh:mm');
     var heureOUTformatee = moment(heureOUTpasFormatee, 'hh:mm');
-
     var heureTOTALE = heureOUTformatee - heureINformatee;
 
     if (heureTOTALE <= 0) {
@@ -282,7 +264,7 @@ function lesHeures() {
     heureTOTALEformatee = Math.ceil(heureTOTALEformatee * 4) / 4;
 
     if (isNaN(heureTOTALEformatee)) {
-      row.cells[9].innerHTML = "";
+      row.cells[9].innerHTML = '';
     } else {
       row.cells[9].innerHTML = heureTOTALEformatee;
     }
